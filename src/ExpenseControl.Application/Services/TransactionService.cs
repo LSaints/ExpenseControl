@@ -1,5 +1,6 @@
 using ExpenseControl.Application.Interfaces;
 using ExpenseControl.Application.Requests.Transaction;
+using ExpenseControl.Application.Responses;
 using ExpenseControl.Domain.Entities;
 using ExpenseControl.Domain.Enums;
 using ExpenseControl.Domain.Exceptions;
@@ -13,16 +14,29 @@ public class TransactionService(
     ICategoryService categoryService
     ) : ITransactionService
 {
-    public async Task<IEnumerable<Transaction>> GetAllTransactions()
+    public async Task<IEnumerable<TransactionResponse>> GetAllTransactions()
     {
         var transactions = await repository.GetAllTransactions();
-        return transactions;
+        var response = transactions.Select(t => 
+            new TransactionResponse(t.Id, t.UserId, t.CategoryId, t.Description, t.Amount, t.Type));
+        return response;
     }
 
-    public async Task<Transaction> GetTransaction(Guid id)
+    public async Task<TransactionResponse> GetTransaction(Guid id)
     {
         var transaction = await repository.GetTransaction(id);
-        return transaction;
+        if (transaction is null)
+            throw new NotFound("Transação não encontrada.");
+        
+        var response = new TransactionResponse(
+            transaction.Id,
+            transaction.UserId, 
+            transaction.CategoryId, 
+            transaction.Description, 
+            transaction.Amount, 
+            transaction.Type);
+        
+        return response;
     }
 
     public async Task CreateTransaction(Guid userId, CreateTransactionRequest request)
