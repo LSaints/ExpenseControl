@@ -1,7 +1,6 @@
 
 using ExpenseControl.Application.Requests.Transaction;
 using ExpenseControl.Application.Responses;
-using ExpenseControl.Domain.Entities;
 
 namespace ExpenseControl.Application.Interfaces;
 
