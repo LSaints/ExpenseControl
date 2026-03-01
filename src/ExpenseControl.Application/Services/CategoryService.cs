@@ -1,8 +1,8 @@
 using ExpenseControl.Application.Interfaces;
 using ExpenseControl.Application.Requests.Category;
 using ExpenseControl.Application.Responses;
+using ExpenseControl.Application.Responses.Category;
 using ExpenseControl.Domain.Entities;
-using ExpenseControl.Domain.Enums;
 using ExpenseControl.Domain.Exceptions;
 using ExpenseControl.Domain.Interfaces;
 
@@ -25,6 +25,18 @@ public class CategoryService(ICategoryRepository repository) : ICategoryService
         var category = await repository.GetCategory(id);
         if (category is null) throw new NotFound("Categoria não encontrada.");
         var response = new CategoryResponse(category.Id, category.Description, category.Purpose);
+        return response;
+    }
+
+    public async Task<CategoryTotalsResponse> GetCategoryTotal()
+    {
+        var categories = await repository.GetCategoriesTotals();
+        var totals = categories.Select(c =>
+                new CategoryTotalResponse(c.Description, c.TotalExpenses, c.TotalIncomes));
+        
+        
+        var summary = new CategorySummaryResponse(totals?.Sum(t => t.TotalExpenses) ?? 0, totals?.Sum(t => t.TotalIncomes) ?? 0);
+        var response = new CategoryTotalsResponse(totals, summary);
         return response;
     }
 

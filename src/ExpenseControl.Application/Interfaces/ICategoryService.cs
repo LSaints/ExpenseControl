@@ -1,5 +1,6 @@
 using ExpenseControl.Application.Requests.Category;
 using ExpenseControl.Application.Responses;
+using ExpenseControl.Application.Responses.Category;
 
 namespace ExpenseControl.Application.Interfaces;
 /// <summary>
@@ -9,5 +10,6 @@ public interface ICategoryService
 {
     Task<IEnumerable<CategoryResponse>> GetCategories();
     Task<CategoryResponse> GetCategory(Guid id);
+    Task<CategoryTotalsResponse> GetCategoryTotal();
     Task CreateCategory(CreateCategoryRequest request);
 }

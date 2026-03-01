@@ -9,6 +9,10 @@ public class Category : BaseEntity
 {
     public string Description { get; private set; }
     public CategoryPurpose Purpose { get; private set; }
+    /// <summary>
+    /// Propriedade de navegação para Transação
+    /// </summary>
+    public ICollection<Transaction> Transactions { get; private set; }
     
     /// <summary>
     /// Construtor com regras de negocio

@@ -1,5 +1,7 @@
 using ExpenseControl.Domain.Entities;
+using ExpenseControl.Domain.Enums;
 using ExpenseControl.Domain.Interfaces;
+using ExpenseControl.Domain.Models;
 using ExpenseControl.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -26,6 +28,32 @@ public class CategoryRepository(
         catch (Exception e)
         {
             logger.LogError(e.Message);
+            throw;
+        }
+    }
+
+    public async Task<IEnumerable<CategoryTotal>> GetCategoriesTotals()
+    {
+        try
+        {
+            var totals = await context.Categories
+                .Select(c => new CategoryTotal(
+                    c.Description,
+                    c.Transactions
+                        .Where(t => t.Type == TransactionType.Expense)
+                        .Sum(t => (decimal?)t.Amount) ?? 0,
+                    c.Transactions
+                        .Where(t => t.Type == TransactionType.Income)
+                        .Sum(t => (decimal?)t.Amount) ?? 0
+                ))
+                .AsNoTracking()
+                .ToListAsync();
+
+            return totals;
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, "Erro ao obter totais por categoria");
             throw;
         }
     }

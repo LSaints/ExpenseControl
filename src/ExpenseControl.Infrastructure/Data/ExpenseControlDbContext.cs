@@ -32,5 +32,14 @@ public class ExpenseControlDbContext : DbContext
                 .HasForeignKey(t => t.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
+
+        modelBuilder.Entity<Category>(category =>
+        {
+            category.HasKey(c => c.Id);
+            category.HasMany(c => c.Transactions)
+                .WithOne(t => t.Category)
+                .HasForeignKey(t => t.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
     }
 }
