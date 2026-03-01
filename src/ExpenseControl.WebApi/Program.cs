@@ -29,18 +29,15 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
 }
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.MapOpenApi();
+// Adicionando documentação Web para API em /api-docs
+// Para facilitar resolvi deixar o swagger ativo mesmo em ambiente docker
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.MapOpenApi();
-    // Adicionando documentação Web para API em /api-docs
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "ExpenseControl API v1");
-        options.RoutePrefix = "swagger"; 
-    });
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "ExpenseControl API v1");
+    options.RoutePrefix = "swagger"; 
+});
 
 // Middleware para tratar das exceções de forma global
 app.UseMiddleware(typeof(GlobalErrorHandlingMiddleware));

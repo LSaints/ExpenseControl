@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: expensecontrol-postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: expensecontroldb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - expensecontrol-network
+
+  app:
+    build:
+      context: .
+      dockerfile: src/ExpenseControl.WebApi/Dockerfile
+    container_name: expensecontrol-app
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=expensecontroldb;Username=admin;Password=admin123"
+    depends_on:
+      - postgres
+    restart: always
+    ports:
+      - "5000:8080"
+    networks:
+      - expensecontrol-network
+
+volumes:
+  postgres_data:
+
+networks:
+  expensecontrol-network:
+    driver: bridge
