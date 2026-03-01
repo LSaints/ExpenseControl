@@ -17,7 +17,11 @@ public class UserRepository(ExpenseControlDbContext context, ILogger<UserReposit
     {
         try
         {
-            var users = await context.Users.AsNoTracking().ToListAsync();
+            var users = await context.Users
+                .AsNoTracking()
+                .Include(u => u.Transactions)
+                .ToListAsync();
+            
             return users;
         }
         catch (Exception e)
