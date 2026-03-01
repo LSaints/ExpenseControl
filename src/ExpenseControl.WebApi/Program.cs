@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
 using ExpenseControl.Application.Extensions;
 using ExpenseControl.Infrastructure.Data;
 using ExpenseControl.Infrastructure.Extensions;
 using ExpenseControl.WebApi.Extensions;
 using ExpenseControl.WebApi.Middlewares;
-using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
