@@ -1,5 +1,6 @@
 using ExpenseControl.Application.Requests.User;
 using ExpenseControl.Application.Responses;
+using ExpenseControl.Application.Responses.User;
 
 namespace ExpenseControl.Application.Interfaces;
 

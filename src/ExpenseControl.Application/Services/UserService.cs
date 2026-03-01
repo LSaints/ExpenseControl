@@ -1,6 +1,7 @@
 using ExpenseControl.Application.Interfaces;
 using ExpenseControl.Application.Requests.User;
 using ExpenseControl.Application.Responses;
+using ExpenseControl.Application.Responses.User;
 using ExpenseControl.Domain.Entities;
 using ExpenseControl.Domain.Enums;
 using ExpenseControl.Domain.Exceptions;

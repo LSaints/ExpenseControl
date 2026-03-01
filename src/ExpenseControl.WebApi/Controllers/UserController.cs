@@ -1,6 +1,7 @@
 using ExpenseControl.Application.Interfaces;
 using ExpenseControl.Application.Requests.User;
 using ExpenseControl.Application.Responses;
+using ExpenseControl.Application.Responses.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseControl.WebApi.Controllers

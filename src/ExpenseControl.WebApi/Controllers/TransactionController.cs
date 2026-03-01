@@ -1,6 +1,7 @@
 using ExpenseControl.Application.Interfaces;
 using ExpenseControl.Application.Requests.Transaction;
 using ExpenseControl.Application.Responses;
+using ExpenseControl.Application.Responses.Transaction;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

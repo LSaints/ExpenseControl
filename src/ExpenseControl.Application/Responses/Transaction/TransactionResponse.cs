@@ -1,6 +1,6 @@
 using ExpenseControl.Domain.Enums;
 
-namespace ExpenseControl.Application.Responses;
+namespace ExpenseControl.Application.Responses.Transaction;
 
 public record TransactionResponse(
     Guid Id,
