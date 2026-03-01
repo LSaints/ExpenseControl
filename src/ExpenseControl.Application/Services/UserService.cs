@@ -31,12 +31,12 @@ public class UserService(IUserRepository repository) : IUserService
     {
         var user = await repository.GetUserById(id);
         
-        var totalExpenses = user.Transactions.Where(t => t.Type is TransactionType.Expense).Sum(t => t.Amount);
-        var totalIncomes = user.Transactions.Where(t => t.Type is TransactionType.Income).Sum(t => t.Amount);
-        var balance = totalIncomes - totalExpenses;
-        
         if (user is null)
             throw new NotFound("Usuário não encontrado.");
+        
+        var totalExpenses = user.Transactions?.Where(t => t.Type is TransactionType.Expense).Sum(t => t.Amount) ?? 0 ;
+        var totalIncomes = user.Transactions?.Where(t => t.Type is TransactionType.Income).Sum(t => t.Amount) ?? 0;
+        var balance = totalIncomes - totalExpenses;
         
         return new UserResponse(user.Id, user.Name, user.Age, totalExpenses, totalIncomes, balance);
 
