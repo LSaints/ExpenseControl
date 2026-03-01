@@ -6,7 +6,10 @@ using ExpenseControl.Domain.Exceptions;
 using ExpenseControl.Domain.Interfaces;
 
 namespace ExpenseControl.Application.Services;
-
+/// <summary>
+/// Implementação do contrato para o serviço de Pessoa
+/// </summary>
+/// <param name="repository">contrato de repositorio</param>
 public class UserService(IUserRepository repository) : IUserService
 {
     public async Task<IEnumerable<UserResponse>> GetAllUsers()

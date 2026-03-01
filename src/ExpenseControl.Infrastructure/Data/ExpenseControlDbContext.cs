@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseControl.Infrastructure.Data;
 
+
+/// <summary>
+/// Classe responsavel por gerenciar a comunicação com banco de dados e configuração das tabelas
+/// </summary>
 public class ExpenseControlDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }

@@ -37,6 +37,11 @@ public class GlobalErrorHandlingMiddleware(RequestDelegate next)
                 stackTrace = exception.StackTrace;
                 status = HttpStatusCode.BadRequest;
                 break;
+            case ArgumentException:
+                message = exception.Message;
+                stackTrace = exception.StackTrace;
+                status = HttpStatusCode.BadRequest;
+                break;
             default:
                 message = exception.Message;
                 stackTrace = exception.StackTrace;

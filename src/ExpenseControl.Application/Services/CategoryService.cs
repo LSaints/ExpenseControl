@@ -6,7 +6,10 @@ using ExpenseControl.Domain.Exceptions;
 using ExpenseControl.Domain.Interfaces;
 
 namespace ExpenseControl.Application.Services;
-
+/// <summary>
+/// Implementação do contrato para o serviço de Category
+/// </summary>
+/// <param name="repository">contrato de repositorio</param>
 public class CategoryService(ICategoryRepository repository) : ICategoryService
 {
     public async Task<IEnumerable<CategoryResponse>> GetCategories()

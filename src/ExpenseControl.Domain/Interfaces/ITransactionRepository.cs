@@ -1,7 +1,9 @@
 using ExpenseControl.Domain.Entities;
 
 namespace ExpenseControl.Domain.Interfaces;
-// Contrato para implementação do repositorio de Transação
+/// <summary>
+/// Contrato para implementação do repositorio de Transação
+/// </summary>
 public interface ITransactionRepository
 {
     Task<IEnumerable<Transaction>> GetAllTransactions();

@@ -1,20 +1,32 @@
 namespace ExpenseControl.Domain.Entities;
-// Classe que representa Pessoa no sistema
+/// <summary>
+/// Classe que representa Pessoa no sistema
+/// </summary>
 public class User : BaseEntity
 {
     public string Name { get; private set; }
-    public uint Age { get; private set; } // tipo uint para valores positivos
+    /// <summary>
+    /// Idade com tipo <b>uint</b> para valores positivos
+    /// </summary>
+    public uint Age { get; private set; } 
     
     public ICollection<Transaction> Transactions { get; private set; }
 
-    // Construtor com regras de negocio
+    /// <summary>
+    /// Construtor com regras de negocio 
+    /// </summary>
+    /// <param name="name">Nome de pessoa</param>
+    /// <param name="age">idade de pessoa</param>
     public User(string name, uint age)
     {
         ChangeName(name);
         ChangeAge(age);
     }
 
-    public User() // Construtor vazio para EF Core
+    /// <summary>
+    /// Construtor vazio para EF Core
+    /// </summary>
+    public User()
     {
     }
 

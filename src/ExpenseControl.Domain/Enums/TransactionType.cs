@@ -1,8 +1,15 @@
 namespace ExpenseControl.Domain.Enums;
-
-// Enumerador que representa o tipo de transação
+/// <summary>
+/// Enumerador que representa o tipo de transação 
+/// </summary>
 public enum TransactionType
 {
+    /// <summary>
+    /// Despesa
+    /// </summary>
     Expense,
+    /// <summary>
+    /// Receita
+    /// </summary>
     Income
 }

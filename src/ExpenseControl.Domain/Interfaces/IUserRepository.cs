@@ -1,7 +1,9 @@
 using ExpenseControl.Domain.Entities;
 
 namespace ExpenseControl.Domain.Interfaces;
-// Contrato para implementação do repositorio de Pessoa
+/// <summary>
+/// Contrato para implementação do repositorio de Pessoa
+/// </summary>
 public interface IUserRepository
 {
     Task<IEnumerable<User>> GetAllUsers();

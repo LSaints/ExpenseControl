@@ -3,6 +3,9 @@ using ExpenseControl.Application.Responses;
 
 namespace ExpenseControl.Application.Interfaces;
 
+/// <summary>
+/// Contrato para implementação do serviço de Pessoa
+/// </summary>
 public interface IUserService
 {
     Task<IEnumerable<UserResponse>> GetAllUsers();

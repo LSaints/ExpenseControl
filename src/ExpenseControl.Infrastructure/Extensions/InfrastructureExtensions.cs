@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ExpenseControl.Infrastructure.Extensions;
 
+/// <summary>
+/// Metodo extensivel para injetar as dependencias de Infrastrutura
+/// </summary>
 public static class InfrastructureExtensions
 {
     public static void UseInfrastructureExtensions(this IServiceCollection services, IConfiguration configuration)

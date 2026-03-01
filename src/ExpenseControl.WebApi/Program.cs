@@ -1,7 +1,10 @@
+using System.Text.Json.Serialization;
 using ExpenseControl.Application.Extensions;
 using ExpenseControl.Infrastructure.Data;
 using ExpenseControl.Infrastructure.Extensions;
+using ExpenseControl.WebApi.Extensions;
 using ExpenseControl.WebApi.Middlewares;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -18,6 +21,8 @@ builder.Services.UseApplicationExtensions();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddHealthChecks();
+
+builder.Services.AddDocs();
 
 var app = builder.Build();
 

@@ -1,7 +1,9 @@
 using ExpenseControl.Domain.Entities;
 
 namespace ExpenseControl.Domain.Interfaces;
-// Contrato para implementação do repositorio de Categorias
+/// <summary>
+/// Contrato para implementação do repositorio de Categorias
+/// </summary>
 public interface ICategoryRepository
 {
     Task<IEnumerable<Category>> GetAllCategories();

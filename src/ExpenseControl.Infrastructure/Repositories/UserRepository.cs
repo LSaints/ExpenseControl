@@ -1,5 +1,4 @@
 using ExpenseControl.Domain.Entities;
-using ExpenseControl.Domain.Exceptions;
 using ExpenseControl.Domain.Interfaces;
 using ExpenseControl.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +6,11 @@ using Microsoft.Extensions.Logging;
 
 namespace ExpenseControl.Infrastructure.Repositories;
 
+/// <summary>
+/// Implementação do contrato para o repositorio de Pessoa
+/// </summary>
+/// <param name="context">Sessão do banco de dados</param>
+/// <param name="logger">Serviço de logs</param>
 public class UserRepository(ExpenseControlDbContext context, ILogger<UserRepository> logger) : IUserRepository
 {
     public async Task<IEnumerable<User>> GetAllUsers()

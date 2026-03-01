@@ -5,7 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace ExpenseControl.Infrastructure.Repositories;
-
+/// <summary>
+/// Implementação do contrato para o repositorio de Transação
+/// </summary>
+/// <param name="context">Sessão do banco de dados</param>
+/// <param name="logger">Serviço de logs</param>
 public class TransactionRepository(
     ExpenseControlDbContext context, 
     ILogger<TransactionRepository> logger

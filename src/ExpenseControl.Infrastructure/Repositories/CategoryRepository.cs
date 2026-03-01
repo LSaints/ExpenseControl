@@ -6,6 +6,11 @@ using Microsoft.Extensions.Logging;
 
 namespace ExpenseControl.Infrastructure.Repositories;
 
+/// <summary>
+/// Implementação do contrato para o repositorio de Categoria
+/// </summary>
+/// <param name="context">Sessão do banco de dados</param>
+/// <param name="logger">Serviço de logs</param>
 public class CategoryRepository(
     ExpenseControlDbContext context, 
     ILogger<CategoryRepository> logger
