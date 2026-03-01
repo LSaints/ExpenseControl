@@ -34,23 +34,22 @@ public class Transaction : BaseEntity
     /// <param name="description">Descrição da transação</param>
     /// <param name="amount">Valor da transação</param>
     /// <param name="type">Tipo da transação, Despesa ou Receita</param>
-    /// <exception cref="ArgumentException"></exception>
     public Transaction(Guid userId, Guid categoryId, string description, decimal amount, TransactionType type)
     {
         if (userId == Guid.Empty)
-            throw new ArgumentException("UserId inválido.");
+            throw new ArgumentNullException(nameof(userId), "Identificador do usuário inválido.");
 
         if (categoryId == Guid.Empty)
-            throw new ArgumentException("CategoryId inválido.");
+            throw new ArgumentException(nameof(categoryId), "Identificador de categória inválido.");
 
         if (string.IsNullOrWhiteSpace(description))
-            throw new ArgumentException("Descrição é obrigatória.");
+            throw new ArgumentNullException(nameof(description), "A descrição é obrigatória.");
 
         if (description.Length > 400)
-            throw new ArgumentException("Descrição deve ter no máximo 400 caracteres.");
+            throw new ArgumentOutOfRangeException(nameof(description), "A descrição deve ter no máximo 400 caracteres.");
 
         if (amount <= 0)
-            throw new ArgumentException("O valor deve ser positivo.");
+            throw new ArgumentOutOfRangeException(nameof(amount), "O valor deve ser maior que zero.");
 
         UserId = userId;
         CategoryId = categoryId;
@@ -60,7 +59,7 @@ public class Transaction : BaseEntity
     }
 
     /// <summary>
-    /// Construtor vazio para EF Core
+    /// Construtor vazío para EF Core
     /// </summary>
     public Transaction() // Construtor vazio para EF Core
     {

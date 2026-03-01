@@ -23,7 +23,7 @@ public class UserService(IUserRepository repository) : IUserService
     {
         var user = await repository.GetUserById(id);
         if (user is null)
-            throw new NotFound("Usuário não encontrado");
+            throw new NotFound("Usuário não encontrado.");
         return new UserResponse(user.Id, user.Name, user.Age);
 
     }
@@ -37,7 +37,7 @@ public class UserService(IUserRepository repository) : IUserService
     public async Task UpdateUser(Guid userId, UpdateUserRequest request)
     {
         var userExists = await repository.GetUserById(userId);
-        if (userExists is null) throw new NotFound("Usuario não encontrado");
+        if (userExists is null) throw new NotFound("Usuário não encontrado.");
         
         var user = new User(request.Name, request.Age);
         await repository.UpdateUser(userId, user);
@@ -46,7 +46,7 @@ public class UserService(IUserRepository repository) : IUserService
     public async Task DeleteUser(Guid id)
     {
         var userExists = await repository.GetUserById(id);
-        if (userExists is null) throw new NotFound("Usuario não encontrado");
+        if (userExists is null) throw new NotFound("Usuário não encontrado.");
         
         await repository.DeleteUser(id);
     }

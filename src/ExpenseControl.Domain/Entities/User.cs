@@ -24,7 +24,7 @@ public class User : BaseEntity
     }
 
     /// <summary>
-    /// Construtor vazio para EF Core
+    /// Construtor vazío para EF Core
     /// </summary>
     public User()
     {
@@ -38,16 +38,19 @@ public class User : BaseEntity
     public void ChangeName(string name)
     {
         if (string.IsNullOrWhiteSpace(name))
-            throw new InvalidOperationException("Nome invalido.");
+            throw new ArgumentNullException(nameof(name), "Nome inválido.");
         
         if (name.Length > 200)
-            throw new InvalidOperationException("O nome excede o numero de 200 caracteres permitidos.");
+            throw new ArgumentOutOfRangeException(nameof(name), "O nome deve ter no máximo 200 caracteres.");
         
         Name = name;
     }
 
     public void ChangeAge(uint age)
     {
+        if (age < 0)
+            throw new ArgumentOutOfRangeException(nameof(age), "A idade deve ser maior que zero.");
+        
         Age = age;
     }
 }

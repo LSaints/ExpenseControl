@@ -47,20 +47,20 @@ public class TransactionService(
         var user = await userRepository.GetUserById(userId);
         var category = await categoryService.GetCategory(request.CategoryId); 
         
-        if (user == null)
-            throw new NotFound("usuario não encontrado.");
+        if (user is null)
+            throw new NotFound("Usuário não encontrado.");
         
-        if (category == null)
-            throw new NotFound("categoria não encontrada.");
+        if (category is null)
+            throw new NotFound("Categoria não encontrada.");
 
         if (!user.IsOfLegalAge() && request.Type is TransactionType.Income)
-            throw new InvalidOperationException("usuario menor de idade, apenas despesas deverão ser aceitas.");
+            throw new InvalidOperationException("Usuário menor de idade. Apenas despesas são permitidas.");
 
         if (request.Type is TransactionType.Expense && category.Purpose is CategoryPurpose.Income)
-            throw new InvalidOperationException("O tipo da transação é despesa, não poderá utilizar uma categoria que tenha a finalidade receita.");
+            throw new InvalidOperationException("Transação do tipo despesa não permite categoria com finalidade receita.");
         
         if (request.Type is TransactionType.Income && category.Purpose is CategoryPurpose.Expense)
-            throw new InvalidOperationException("O tipo da transação é receita, não poderá utilizar uma categoria que tenha a finalidade despesa.");
+            throw new InvalidOperationException("Transação do tipo receita não permite categoria com finalidade despesa.");
 
         var transaction = new Transaction(userId, request.CategoryId, request.Description, request.Amount, request.Type);
         await repository.CreateTransaction(transaction);

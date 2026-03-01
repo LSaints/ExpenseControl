@@ -15,14 +15,13 @@ public class Category : BaseEntity
     /// </summary>
     /// <param name="description">Descrição da categoria</param>
     /// <param name="purpose">Finalidade</param>
-    /// <exception cref="InvalidOperationException"></exception>
     public Category(string description, CategoryPurpose purpose)
     {
         if (string.IsNullOrEmpty(description))
-            throw new InvalidOperationException("Descrição invalida.");
+            throw new ArgumentNullException(nameof(description), "A descrição é obrigatória.");
 
         if (description.Length > 200)
-            throw new InvalidOperationException("A descrição excede o numero máximo de 400 caracteres.");
+            throw new ArgumentOutOfRangeException(nameof(description), "A descrição deve ter no máximo 400 caracteres.");
         
         Description = description;
         Purpose = purpose;

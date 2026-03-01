@@ -4,7 +4,6 @@ using ExpenseControl.Infrastructure.Extensions;
 using ExpenseControl.WebApi.Extensions;
 using ExpenseControl.WebApi.Middlewares;
 using Microsoft.EntityFrameworkCore;
-using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +34,12 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     // Adicionando documentação Web para API em /api-docs
-    app.MapScalarApiReference("api-docs");
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "ExpenseControl API v1");
+        options.RoutePrefix = "swagger"; 
+    });
 }
 
 // Middleware para tratar das exceções de forma global
