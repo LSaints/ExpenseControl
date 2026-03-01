@@ -50,6 +50,9 @@ public class Transaction : BaseEntity
 
         if (amount <= 0)
             throw new ArgumentOutOfRangeException(nameof(amount), "O valor deve ser maior que zero.");
+        
+        if (!Enum.IsDefined(typeof(TransactionType), type))
+            throw new ArgumentException(nameof(type), "Tipo de transação é invalido.");
 
         UserId = userId;
         CategoryId = categoryId;

@@ -2,6 +2,7 @@ using ExpenseControl.Application.Interfaces;
 using ExpenseControl.Application.Requests.Category;
 using ExpenseControl.Application.Responses;
 using ExpenseControl.Domain.Entities;
+using ExpenseControl.Domain.Enums;
 using ExpenseControl.Domain.Exceptions;
 using ExpenseControl.Domain.Interfaces;
 

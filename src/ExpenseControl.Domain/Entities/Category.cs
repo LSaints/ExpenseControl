@@ -23,6 +23,9 @@ public class Category : BaseEntity
         if (description.Length > 200)
             throw new ArgumentOutOfRangeException(nameof(description), "A descrição deve ter no máximo 400 caracteres.");
         
+        if (!Enum.IsDefined(typeof(CategoryPurpose), purpose))
+            throw new ArgumentException(nameof(purpose), "Tipo de finalidade da categória é invalido.");
+        
         Description = description;
         Purpose = purpose;
     }

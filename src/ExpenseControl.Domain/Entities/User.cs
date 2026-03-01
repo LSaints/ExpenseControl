@@ -48,7 +48,7 @@ public class User : BaseEntity
 
     public void ChangeAge(uint age)
     {
-        if (age < 0)
+        if (age <= 0)
             throw new ArgumentOutOfRangeException(nameof(age), "A idade deve ser maior que zero.");
         
         Age = age;
