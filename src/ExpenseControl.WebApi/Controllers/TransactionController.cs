@@ -20,7 +20,7 @@ namespace ExpenseControl.WebApi.Controllers
             return Ok(transactions);
         }
         
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(TransactionResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -30,7 +30,7 @@ namespace ExpenseControl.WebApi.Controllers
             return Ok(transactions);
         }
         
-        [HttpPost("{userId}")]
+        [HttpPost("{userId:guid}")]
         [ProducesResponseType(typeof(TransactionResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
