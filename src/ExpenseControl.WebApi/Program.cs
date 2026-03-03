@@ -7,8 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+builder.Services.UseCorsConfiguration();
 builder.Services.AddControllers();
 
 // Registra as dependências das camadas Infrastructure e Application
@@ -38,7 +37,7 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "ExpenseControl API v1");
     options.RoutePrefix = "swagger"; 
 });
-
+app.UseCors("AllowFrontend");
 // Middleware para tratar das exceções de forma global
 app.UseMiddleware(typeof(GlobalErrorHandlingMiddleware));
 // Rota para healthCheck da API
