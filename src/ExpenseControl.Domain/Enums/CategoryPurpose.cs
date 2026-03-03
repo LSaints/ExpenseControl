@@ -8,13 +8,13 @@ public enum CategoryPurpose
     /// <summary>
     /// Despesa
     /// </summary>
-    Expense,
+    Expense = 0,
     /// <summary>
     /// Receita
     /// </summary>
-    Income,
+    Income = 1,
     /// <summary>
     /// Ambas
     /// </summary>
-    Both
+    Both = 2
 }

@@ -21,9 +21,8 @@ export const useUsers = () => {
         fetchUsers();
     }, []);
 
-        const filteredUsers = users.filter((user) =>
-        user.name.toLowerCase().includes(searchString.toLowerCase())
-    );
+    const filteredUsers = users.filter((user) =>
+        user.name.toLowerCase().includes(searchString.toLowerCase()));
 
     const handleDeleteUser = async (id: string) => {
         try {
@@ -42,13 +41,13 @@ export const useUsers = () => {
         navigate("/pessoas/novo");
     };
 
-    return { 
-        users, 
-        searchString, 
-        filteredUsers, 
-        handleDeleteUser, 
-        handleEditUser, 
-        handleNavigate, 
-        setSearchString 
+    return {
+        users,
+        searchString,
+        filteredUsers,
+        handleDeleteUser,
+        handleEditUser,
+        handleNavigate,
+        setSearchString
     }
 }

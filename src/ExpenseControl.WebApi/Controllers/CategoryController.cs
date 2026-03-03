@@ -1,8 +1,6 @@
 using ExpenseControl.Application.Interfaces;
 using ExpenseControl.Application.Requests.Category;
-using ExpenseControl.Application.Responses;
 using ExpenseControl.Application.Responses.Category;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseControl.WebApi.Controllers
@@ -22,10 +20,10 @@ namespace ExpenseControl.WebApi.Controllers
         }
 
         [HttpGet("totals")]
-        [ProducesResponseType(typeof(CategoryTotalResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CategoryTotalsResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IEnumerable<CategoryTotalResponse>>> GetTotal()
+        public async Task<ActionResult<IEnumerable<CategoryTotalsResponse>>> GetTotal()
         {
             var categories = await categoryService.GetCategoryTotal();
             return Ok(categories);
