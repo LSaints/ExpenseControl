@@ -38,7 +38,9 @@ public class CategoryRepository(
         {
             var totals = await context.Categories
                 .Select(c => new CategoryTotal(
+                    c.Id,
                     c.Description,
+                    c.Purpose,
                     c.Transactions
                         .Where(t => t.Type == TransactionType.Expense)
                         .Sum(t => (decimal?)t.Amount) ?? 0,
@@ -48,6 +50,35 @@ public class CategoryRepository(
                 ))
                 .AsNoTracking()
                 .ToListAsync();
+
+            return totals;
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, "Erro ao obter totais por categoria");
+            throw;
+        }
+    }
+    
+    public async Task<CategoryTotal> GetCategoryTotal(Guid categoryId)
+    {
+        try
+        {
+            var totals = await context.Categories
+                .Where(c => c.Id == categoryId)
+                .Select(c => new CategoryTotal(
+                    c.Id,
+                    c.Description,
+                    c.Purpose,
+                    c.Transactions
+                        .Where(t => t.Type == TransactionType.Expense)
+                        .Sum(t => (decimal?)t.Amount) ?? 0,
+                    c.Transactions
+                        .Where(t => t.Type == TransactionType.Income)
+                        .Sum(t => (decimal?)t.Amount) ?? 0
+                ))
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
 
             return totals;
         }

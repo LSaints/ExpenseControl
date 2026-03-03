@@ -5,6 +5,7 @@ using ExpenseControl.Application.Responses.Category;
 using ExpenseControl.Domain.Entities;
 using ExpenseControl.Domain.Exceptions;
 using ExpenseControl.Domain.Interfaces;
+using ExpenseControl.Domain.Models;
 
 namespace ExpenseControl.Application.Services;
 /// <summary>
@@ -20,11 +21,12 @@ public class CategoryService(ICategoryRepository repository) : ICategoryService
         return response;
     }
 
-    public async Task<CategoryResponse> GetCategory(Guid id)
+    public async Task<CategoryTotal> GetCategory(Guid id)
     {
-        var category = await repository.GetCategory(id);
+        var category = await repository.GetCategoryTotal(id);
         if (category is null) throw new NotFound("Categoria não encontrada.");
-        var response = new CategoryResponse(category.Id, category.Description, category.Purpose);
+        
+        var response = new CategoryTotal(category.Id, category.Description, category.Purpose, category.TotalExpenses, category.TotalIncomes);
         return response;
     }
 
@@ -32,7 +34,7 @@ public class CategoryService(ICategoryRepository repository) : ICategoryService
     {
         var categories = await repository.GetCategoriesTotals();
         var totals = categories.Select(c =>
-                new CategoryTotalResponse(c.Description, c.TotalExpenses, c.TotalIncomes));
+                new CategoryTotalResponse(c.Id, c.Description, c.TotalExpenses, c.TotalIncomes));
         
         
         var summary = new CategorySummaryResponse(totals?.Sum(t => t.TotalExpenses) ?? 0, totals?.Sum(t => t.TotalIncomes) ?? 0);

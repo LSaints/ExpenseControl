@@ -11,4 +11,5 @@ public interface ICategoryRepository
     Task<IEnumerable<CategoryTotal>> GetCategoriesTotals();
     Task<Category?> GetCategory(Guid id);
     Task CreateCategory(Category category);
+    Task<CategoryTotal> GetCategoryTotal(Guid categoryId);
 }

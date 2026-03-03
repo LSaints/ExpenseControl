@@ -21,6 +21,9 @@ export type CategoryType = {
   id: string;
   description: string;
   purpose: CategoryPurposeType;
+  totalExpenses: number; 
+  totalIncomes: number; 
+  balance: number;
 }
 
 export type CreateCategoryType = {

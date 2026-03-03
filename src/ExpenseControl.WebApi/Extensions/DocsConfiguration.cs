@@ -19,7 +19,7 @@ public static class DocsConfiguration
             {
                 Title = "Expense Control API",
                 Version = "v1",
-                Description = "API para controle de despesa",
+                Description = "API para controle de despesas",
             });
             c.UseInlineDefinitionsForEnums();
         });

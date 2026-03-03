@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import type { CategoryType } from "../types/Category";
+import type { CategoriesTotalsType, CategoryType } from "../types/Category";
 import { useNavigate } from "react-router-dom";
-import { GetAllCategories } from "../services/CategoryService";
+import { GetAllCategories, GetAllCategoriesTotals } from "../services/CategoryService";
 
 export const useCategories = () => {
     const [searchString, setSearchString] = useState("");
     const [categories, setCategories] = useState<CategoryType[]>([]);
+    const [totals, setTotals] = useState<CategoriesTotalsType | undefined>();
     const navigate = useNavigate();
 
     const handleBtnClick = () => {
@@ -22,11 +23,21 @@ export const useCategories = () => {
             setCategories(response);
         };
 
+        const fetchTotals = async () => {
+            const response = await GetAllCategoriesTotals();
+            if (response == undefined) {
+                setCategories([]);
+                return;
+            }
+            setTotals(response);
+        };
+
+        fetchTotals();
         fetchCategories();
     }, []);
 
     const filteredCategories = categories.filter((category) =>
         category.description.toLowerCase().includes(searchString.toLowerCase()));
 
-    return { categories, filteredCategories, searchString, setSearchString, handleBtnClick }
+    return { categories, filteredCategories, searchString, totals, setSearchString, handleBtnClick }
 }
