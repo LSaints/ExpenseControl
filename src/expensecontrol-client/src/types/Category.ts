@@ -16,21 +16,21 @@ export const CategoryPurposeLabels = {
 
 
 export type CategoryType = {
-    id: string;
-    description: string;
-    purpose: CategoryPurposeType;
+  id: string;
+  description: string;
+  purpose: CategoryPurposeType;
 }
 
 export type CreateCategoryType = {
-    description: string;
-    purpose: CategoryPurposeType;
+  description: string;
+  purpose: CategoryPurposeType;
 }
 
 export type CategoriesTotalsType = {
-    categories: CategoryType[];
-    summary: {
-        totalExpenses: number;
-        totalIncomes: number;
-        totalBalance: number;
-    };
+  categories: CategoryType[];
+  summary: {
+    totalExpenses: number;
+    totalIncomes: number;
+    totalBalance: number;
+  };
 }
