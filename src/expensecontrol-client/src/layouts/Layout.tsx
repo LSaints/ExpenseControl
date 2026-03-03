@@ -5,7 +5,7 @@ interface ILayoutProps {
     children: React.ReactNode;
     title: string
 }
-
+// Layout base das páginas
 export const Layout = (props: ILayoutProps) => {
     const theme = useTheme();
     const { toggleDrawerOpen  } = useDrawerContext();

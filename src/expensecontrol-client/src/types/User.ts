@@ -1,3 +1,4 @@
+// tipo da resposta e requisições de User
 export type UserType = {
     id: string;
     name: string;

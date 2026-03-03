@@ -3,6 +3,7 @@ import type { ApiError } from "../types/ApiError";
 import type { CategoriesTotalsType, CategoryType, CreateCategoryType } from "../types/Category";
 import { api } from "./Api";
 
+// funções para chamdas http da API para os endpoints de Categories
 export const GetAllCategories = async (): Promise<CategoryType[]> => {
     try {
         const response = await api.get<CategoryType[]>("/v1/categories")

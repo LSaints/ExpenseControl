@@ -1,3 +1,5 @@
+
+// tipo da resposta e requisições de Category e seu Enum de Purpose
 export const CategoryPurpose = {
   Expense: 0,
   Income: 1,

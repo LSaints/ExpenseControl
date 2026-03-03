@@ -6,11 +6,14 @@ import { Transactions } from "./pages/transactions/Transactions";
 import { NewUser } from "./pages/users/NewUser";
 import { EditUser } from "./pages/users/EditUser";
 import { NewCategory } from "./pages/categories/NewCategory";
+import { NewTransaction } from "./pages/transactions/NewTransaction";
 
+// Rotas da aplicação e seus componentes/páginas para renderizar
 export const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/pagina-inicial" element={<Home />} />
+            
             <Route path="/categorias" element={<Categories />} />
             <Route path="/categorias/novo" element={<NewCategory />} />
 
@@ -19,6 +22,7 @@ export const AppRoutes = () => {
             <Route path="/pessoas/:id" element={<EditUser />} />
             
             <Route path="/transacoes" element={<Transactions />} />
+            <Route path="/transacoes/novo" element={<NewTransaction />} />
 
             <Route path="*" element={<Navigate to={"/home"} />} />
         </Routes>

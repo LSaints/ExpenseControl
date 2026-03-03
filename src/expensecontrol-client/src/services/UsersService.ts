@@ -3,6 +3,8 @@ import type { CreateUserType, UserType } from "../types/User"
 import { api } from "./Api"
 import type { ApiError } from "../types/ApiError"
 
+
+// funções para chamdas http da API para os endpoints de Users
 export const GetAllUsers = async (): Promise<UserType[]> => {
     try {
         const response = await api.get<UserType[]>("/v1/users")
