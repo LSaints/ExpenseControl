@@ -1,7 +1,10 @@
 export type UserType = {
     id: string;
     name: string;
-    age: number
+    age: number;
+    totalExpenses: number;
+    totalIncome: number;
+    balance: number;
 }
 
 export type CreateUserType = {

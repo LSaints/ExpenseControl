@@ -42,6 +42,15 @@ export const UsersTable = (props: IUserTableProps) => {
                             <TableCell>
                                 <Typography fontWeight="bold">Idade</Typography>
                             </TableCell>
+                            <TableCell>
+                                <Typography fontWeight="bold">Despesas</Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography fontWeight="bold">Receitas</Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography fontWeight="bold">Saldo</Typography>
+                            </TableCell>
                             <TableCell align="right">
                                 <Typography fontWeight="bold">Ações</Typography>
                             </TableCell>
@@ -56,6 +65,9 @@ export const UsersTable = (props: IUserTableProps) => {
                                     <TableCell>{user.id}</TableCell>
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.age}</TableCell>
+                                    <TableCell>{user.totalExpenses}</TableCell>
+                                    <TableCell>{user.totalIncome}</TableCell>
+                                    <TableCell>{user.balance}</TableCell>
                                     <TableCell align="right">
                                         <IconButton
                                             size="small"
