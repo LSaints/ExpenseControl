@@ -1,6 +1,6 @@
 # ExpenseControl
 
-Aplicação para **gerenciamento de gastos residenciais**, desenvolvida com **.NET** no backend e **React** com **Vite** no frontend.
+Aplicação para **gerenciamento de gastos residenciais**, desenvolvida com **.NET** com **Postgres** no backend e **React** com **Vite** no frontend.
 
 ---
 
