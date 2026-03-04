@@ -3,7 +3,7 @@ import { IncomeExpenseChart } from '../../components/income-expense-chart/Income
 import { Layout } from '../../layouts/Layout';
 import type { UserType } from '../../types/User';
 import { GetAllUsers } from '../../services/UsersService';
-import { GetAllCategories, GetAllCategoriesTotals } from '../../services/CategoryService';
+import { GetAllCategoriesTotals } from '../../services/CategoryService';
 import type { CategoriesTotalsType } from '../../types/Category';
 import { CategoryCharts } from '../../components/categories-charts/CategoryCharts';
 

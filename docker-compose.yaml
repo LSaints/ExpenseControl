@@ -15,7 +15,7 @@ services:
     networks:
       - expensecontrol-network
 
-  app:
+  backend:
     build:
       context: .
       dockerfile: src/ExpenseControl.WebApi/Dockerfile
@@ -30,6 +30,16 @@ services:
       - "5000:8080"
     networks:
       - expensecontrol-network
+
+  frontend:
+    build:
+      context: src/expensecontrol-client/
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    networks:
+      - expensecontrol-network
+    
 
 volumes:
   postgres_data:

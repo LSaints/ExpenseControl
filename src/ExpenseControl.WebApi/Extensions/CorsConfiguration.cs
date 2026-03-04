@@ -10,7 +10,7 @@ public static class CorsConfiguration
                 policy =>
                 {
                     policy
-                        .WithOrigins("http://localhost:5173") 
+                        .AllowAnyOrigin() // permitindo que qualquer origem possa acessar o nosso backend mas é importante configurar corretamente em produção
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
